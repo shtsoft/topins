@@ -1,0 +1,26 @@
+### Core Latex Auxiliary Files:
+
+*.aux
+*.log
+*.out
+*.toc
+
+
+### Intermediate Documents:
+
+*.pdf
+
+
+### Bibliography Auxiliary Files:
+
+*.bbl
+*.blg
+
+
+### Auxiliary and Intermediate Files From Other Packages:
+
+
+### Editors:
+
+# vim
+*~
