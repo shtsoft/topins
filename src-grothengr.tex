@@ -1,0 +1,44 @@
+\nocite{7fc005ba}
+\nocite{a3f326d1}
+Most readers might have seen how one can construct integers $\mathbb{Z}$ from natural numbers $\mathbb{N}$: one just takes pairs of natural numbers and interprets them as differences which can, of course, also be negative and hence represent an integer. To get the abelian group structure of $\mathbb{Z}$ the formal constructions actually makes only use of the commutative monoidal structure of $\mathbb{N}$. So one can abstract the construction by a functor from $\mathbf{CMon}$ to $\mathbf{Ab}$. Originally, this insight is due to Grothendieck why the resulting abelian group is called Grothendieck group. At the heart of the abstraction is the following lemma:
+\\
+\begin{lem}
+\label{lem:upgrothengr}
+Let $M$ be in $\mathrm{ob}_{\mathbf{CMon}}$. Then $G(M)$ as an element of $\mathrm{ob}_{\mathbf{Ab}}$ exists satisfying: There is $i \in \mathrm{mor}_{\mathbf{CMon}}(M,G(M))$ such that for any $A \in \mathrm{ob}_{\mathbf{Ab}}$ and $\iota \in \mathrm{mor}_{\mathbf{CMon}}(M,A)$ there is a unique $\Phi \in \mathrm{mor}_{\mathbf{Ab}}(G(M),A)$ with $\iota = \Phi \circ i$.
+\end{lem}
+Although we have not given a proof of the above statement we still want to sketch a construction of the Grothendieck group on which a proof could piggy-back. Like we said, the idea is to abstract the ususal contruction of the abelian group of integers $\mathbb{Z}$ from commutative monoid of natural numbers $\mathbb{N}$. So let $M$ be a commutative monoid. Then define an equivalence relation $\sim$ on $M \times M$ by
+\begin{align*}
+  (m_{1},m_{2})
+  \sim
+  (\hat{m}_{1},\hat{m}_{2})
+  \qquad
+  &:\Leftrightarrow
+  \qquad
+  \exists
+  m
+  \in
+  M
+  \colon
+  m_{1}
+  +_{M}
+  \hat{m}_{2}
+  +_{M}
+  m
+  =
+  \hat{m}_{1}
+  +_{M}
+  m_{2}
+  +_{M}
+  m
+\end{align*}
+With that define $G(M) := (M \times M)/\sim$ and $+_{G(M)}$ by
+\begin{align*}
+  [(m_{1},m_{2})]
+  +_{G(M)}
+  [(\hat{m}_{1},\hat{m}_{2})]
+  :=
+  [(m_{1} +_{M} \hat{m}_{1},m_{2} +_{M} \hat{m}_{2})]
+\end{align*}
+for  $[(m_{1},m_{2})],[(\hat{m}_{1},\hat{m}_{2})] \in G(M)$. $+_{G(M)}$ is well-defined and $(G(M),+_{G(M)})$ is an abelian group group. The homomorphism $i \colon M \to G(M)$ is defined by $m \mapsto [(m,0_{M})]$. Note that $i$ is injective if and only if $M$ has the \textbf{cancellation property}, that is, $m_{1} + m = m_{2} + m$ implies $m_{1} = m_{2}$ for all $m_{1},m_{2},m \in M$.
+\\
+$G(M)$ in the preceding lemma \ref{lem:upgrothengr} is called \textbf{Grothendieck group}. Moreover there is a covariant functor $G \colon \mathbf{CMon} \to \mathbf{Ab}$ assigning to a commutative monoid $M$ its Grothendieck group $G(M)$ and to $f \in \mathrm{mor}_{\mathbf{CMon}}(M \to \hat{M})$ the group homomorphism $G(f)([(m_{1},m_{2})]) := [(f(m_{1}),f(m_{2}))]$.

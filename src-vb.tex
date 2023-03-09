@@ -1,0 +1,134 @@
+\nocite{7fc005ba}
+\nocite{c7f15065}
+The idea of (fiber) bundles is to attach to each point of a (base) space another fixed space - the fiber - yielding a new (total) space over that base space. But instead of just taking the cartesian product as total space one requires the total space to be a cartesian product only locally. The reason for that more general requirement is that the base space is usually a locally euclidean space. The fiber does also often have an additional structure like that of a vector space. All in all these generalized spaces are often appropriate to encode intersting topological information of a problem - especially in physiscs - and are therefore well-studied. The topological information we will later be interested in can be encoded in so-called vector bundles we want to discuss now.
+\\
+A vector bundle is special type of a fiber bundle. So let us consider fiber bundles first. A \textbf{fiber bundle} is a tuple $(E,B,p,F)$ consisting of topological spaces $E,B,F$ and a map $p \colon E \to B$ such that there is an open cover $\lbrace U_{\alpha} \colon \alpha \in \mathsf{A} \rbrace$ of $B$ and homeomorphisms $h_{\alpha} \colon p^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ taking $p^{-1}(b_{\alpha})$ to $\lbrace b_{\alpha} \rbrace \times F$ for all $b_{\alpha} \in U_{\alpha}$. $\lbrace (h_{\alpha},U_{\alpha}) \colon \alpha \in \mathsf{A} \rbrace$ is called local trivialization, $E$ \textbf{total space}, $B$ \textbf{base space} and $F$ \textbf{fiber}. The fiber bundle $(E,B,p,F)$ is \textbf{trivial} if there is a homeomorphism $p^{-1}(B) \to B \times F$. Hence a fiber bundle is a generalization of the cartesian product as topological space and cartesian products are a first, though trivial, example of fiber bundles.
+\\
+Now we can restrict our attention to vector bundles. They are fiber bundles where the fiber is a certain vector space. More precisely, a \textbf{(real/complex $n$-dimensional) vector bundle} is a fiber bundle $(E,B,p,\mathbb{K}^{n})$ such that for the local trivialization $\lbrace (h_{\alpha},U_{\alpha}) \rbrace$ the map $h_{\alpha} \vert p^{-1}(b_{\alpha})$ is linear for all $b_{\alpha} \in U_{\alpha}$. Sometimes one just writes $p \colon E \to B$ or even simpler $E$ for a vector bundle. To write $\epsilon^{n}$ for the $n$-dimensional trivial bundle over some context related base space is common as well. A non-trivial example is the tangent bundle over the sphere $S^{2}$.
+\\
+Vector bundles can be reconstructed from their trivial pieces. The value of this reconstruction comes from making a relation to cohomology apparent on the one hand. This is discussed in \cite{catctxphy} and shall not bother us although it is also important in our context. On the other hand it allows to construct a vector bundle when only the trivial pieces are given which is often the case in reality and so is useful for us. Now let us have a look at how the total space of a bundle $(E,B,p,\mathbb{K}^{n})$ can be reconstrcuted from a local trivialization $\lbrace (h_{\alpha},U_{\alpha}) \rbrace$. This is done by {\glqq}gluing together{\grqq} the pieces $U_{\alpha} \times \mathbb{K}^{n}$ in the right way. By gluing we mean a certain equivalence relation on the disjoint union of trivial spaces $\coprod_{\alpha}U_{\alpha} \times \mathbb{K}^{n}$. Identifying $(b,x) \in U_{\alpha_{1}} \times \mathbb{K}^{n}$ with $h_{\alpha_{2}}(h_{\alpha_{1}}^{-1}(b,x))$ for $b \in U_{\alpha_{1}} \cap U_{\alpha_{2}}$ yields the equivalence relation that reconstructs $E$ as quotient space. Moreover, this identification gives rise to \textbf{gluing functions} which are the obvious maps $f_{\alpha_{2}\alpha_{1}} \colon U_{\alpha_{1}} \cap U_{\alpha_{2}} \to GL_{\mathbb{K}}(n)$ (in terms of local trivialization $h_{\alpha}$) such that\footnote{this is called \textit{cocycle condition} and is the link to cohomology}
+\begin{align*}
+  f_{\alpha_{3}\alpha_{2}}
+  \circ
+  f_{\alpha_{2}\alpha_{1}}
+  &=
+  f_{\alpha_{3}\alpha_{1}}
+\end{align*}
+on $U_{\alpha_{1}} \cap U_{\alpha_{2}} \cap U_{\alpha_{3}}$. Here $GL_{\mathbb{K}}(n)$ denotes the set of invertible linear maps between $\mathbb{K}^{n}$. And these gluing functions do already suffice to define vector bundles.
+\\
+With our understand of vector bundles as a generalzation of a family vector space it comes as no surprise that we can extend some constructions on vector spaces to vector bundles: direct sums, scalar products and tensor products. In the following we assume $(E_{1},B,p_{1},\mathbb{K}^{n_{1}}),(E_{2},B,p_{2},\mathbb{K}^{n_{2}})$ to be vector bundles to define the notions. 
+\begin{enumerate}
+\item[$\bullet$]
+  The \textbf{direct sum} of those bundles $E_{1}$ and $E_{2}$ is an $n_{1} + n_{2}$ dimensional bundle with base space $B$ and total space
+\begin{align*}
+  E_{1} \oplus E_{2}
+  &=
+  \lbrace
+      (v_{1},v_{2})
+      \in
+      E_{1}
+      \times
+      E_{2}
+    \colon
+      p_{1}(v_{1})
+      =
+      p_{2}(v_{2})
+  \rbrace
+\end{align*}
+That this really defines such a bundle is easily deduced from the following observations:
+\begin{enumerate}
+\item[(i)]
+the \textbf{restriction} of $p \colon E \to B$ to a subset $\tilde{B}$ of $B$ is a vector bundle $\tilde{p} \colon p^{-1}(\tilde{B}) \to \tilde{B}$ where $\tilde{p} := p \vert p^{-1}(\tilde{B})$
+\item[(ii)]
+the \textbf{product} of vector bundles $p \colon E \to B$, $\hat{p} \colon \hat{E} \to \hat{B}$ is a vector bundle $p \times \hat{p} \colon E \times \hat{E} \to B \times \hat{B}$ with fibers $p^{-1}(b) \times \hat{p}^{-1}(\hat{b})$ where $b \in B$ and $\hat{b} \in \hat{B}$
+\end{enumerate}
+So restricting the product $E_{1} \times E_{2}$ over the diagonal of $B \times B$ yields $E_{1} \oplus E_{2}$ as vector bundle.
+\item[$\bullet$]
+A \textbf{scalar product} is a map $(\cdot\vert\cdot) \colon E_{1} \times E_{1} \to \mathbb{K}$ that is a scalar product (on vector spaces) in each fiber. One can guarantee the existence of a scalar produc if $B$ compact Hausdorff.
+\item[$\bullet$]
+For tensor products: Having the notion of gluing functions still in mind, a local trivialization $\lbrace (h_{\alpha}^{i},U_{\alpha}) \rbrace$ implies gluing functions $g_{\alpha_{2}\alpha_{1}}^{i}$ for $(E_{i},B,p_{i},\mathbb{K}^{n_{i}})$. Then $g_{\alpha_{2}\alpha_{1}}^{1}(b) \otimes g_{\alpha_{2}\alpha_{1}}^{2}(b)$ defines gluing functions for $\coprod_{\alpha}U_{\alpha} \times (\mathbb{K}^{n_{1}} \otimes \mathbb{K}^{n_{2}})$. The resulting vector bundle is written $E_{1} \otimes E_{2}$ and called \textbf{tensor product}. It is again a bundle over $B$.
+\end{enumerate}
+Interestingly, because scalar products always exists for bundles with base space compact Hausdorff one can show the following proposition which is the basis for a K-theortic examination of vector bundles.
+\\
+\begin{prp}
+\label{prp:vbtriv}
+If $B$ is a compact Hausdorff space then for each vector bundle $(E_{1},B,p_{1},\mathbb{K}^{n_{1}})$ there is a vector bundle $(\hat{E}_{1},B,\hat{p}_{1},\mathbb{K}^{\hat{n}_{1}})$ such that $E_{1} \oplus \hat{E}_{1}$ is trivial.
+\end{prp}
+In the last part of this subsection let us look at vector bundles from a categorical viewpoint. We want to make vector bundles the objects of a category. The main question then is how to define morphism. As a bundle consists essentially of two spaces - the base and the total space - a morphism should be a pair of functions. Moreover the function between total spaces should preserve the structure of the fiber, that is, it should be linear on the fiber. Therefore given vector bundles $(E_{1},B_{1},p_{1},\mathbb{K}^{n_{1}}),(E_{2},B_{2},p_{2},\mathbb{K}^{n_{2}})$ one defines a \textbf{(vector) bundle map (from $(E_{1},B_{1},p_{1},\mathbb{K}^{n_{1}})$ to $(E_{2},B_{2},p_{2},\mathbb{K}^{n_{2}})$)} as a pair of maps $\varphi \colon B_{1} \to B_{2}$ and $\phi \colon E_{1} \to E_{2}$ such that $\phi$ is linear in each fiber $p^{-1}(b_{1})$ for $b_{1} \in B_{1}$ making the diagram
+\begin{align*}
+\begin{CD}
+  B_{1}
+  @>\varphi>>
+  B_{2}
+  \\
+  @Ap_{1}AA
+  @AAp_{2}A
+  \\
+  E_{1}
+  @>\phi>>
+  E_{2}
+\end{CD}
+\end{align*}
+commute. Then the real and complex vector bundles are the objects of categories $\mathbb{K}\mathbf{-VB}$ with morphisms the bundle maps.
+\\
+An intersting property of $\mathbb{K}\mathbf{-VB}$ that for $(E_{1},B_{1},p_{1},\mathbb{K}^{n})$ and each map $f \colon B_{2} \to B_{1}$ one can obtain a (pretty much unique)\footnote{the keyword is universality w.r.t. category theory} bundle over $B_{2}$ by {\glqq}pulling back{\grqq} $p_{1}$ along $f$ and extend $f$ to a bundle map. A representation is
+\begin{align*}
+  p_{2}
+  \colon
+  E_{2}
+  &:=
+  \lbrace
+      (b_{2},e_{1})
+      \in
+      B_{2}
+      \times
+      E_{1}
+    \colon
+      f(b_{2})
+      =
+      p_{1}(e_{1})
+  \rbrace
+  \to
+  B_{2}
+  ,\qquad
+  (b_{2},e_{1})
+  \mapsto
+  b_{2}
+\end{align*}
+making $(f,\phi_{f})$ into a bundle map if $\phi_{f} \colon E_{2} \to E_{1}$ denotes the map defined by $\phi_{f}(b_{2},e_{1}) := e_{1}$. In particular, note that $\phi_{f}$ is an isomorphism from $p_{2}^{-1}(b_{2})$ to $p_{1}^{-1}(f(b_{2}))$ for all $b_{2} \in B_{2}$. As indicated above we say that $E_{2}$ is the \textbf{pullback} of $E_{1}$ (along $f$).
+\\
+With the help of the pullback we now can define a functor $V_{\mathbb{K}}$ from $\mathbf{Top-cH}$ to $\mathbf{CMon}$ finally setting the stage for topological K-theory. Let us denote the set\footnote{this is not obvious (compare \cite{7fc005ba})} of $n$-dimensional vector bundles over a base space $B$ which is compact Hausdorff by $V_{\mathbb{K}}^{n}(B)$. This is essentially what $V_{\mathbb{K}}$ will do on objects. For morphisms note that from a map $f \colon B_{2} \to B_{1}$ we obtain functions $V_{\mathbb{K}}^{n}(f) \colon V_{\mathbb{K}}^{n}(B_{1}) \to V_{\mathbb{K}}^{n}(B_{2})$ by pulling back along $f$ having the properties:
+\begin{enumerate}
+\item[(F1)]
+For $f$ the identity the pullback of a bundle along $f$ is the same bundle again by the identity $V_{\mathbb{K}}^{n}(f)$.
+\item[(F2$^{\prime}$)]
+For maps $f_{ij} \colon B_{i} \to B_{j}$
+\begin{align*}
+  V_{\mathbb{K}}^{n}(f_{21} \circ f_{32})
+  &=
+  V_{\mathbb{K}}^{n}(f_{32})
+  \circ
+  V_{\mathbb{K}}^{n}(f_{21})
+\end{align*}
+holds.
+\end{enumerate}
+This turns $V_{\mathbb{K}}^{n}$ into a (contravariant) functor from $\mathbf{Top-cH}$ to $\mathbf{Set}$, at least. But one can further show that
+\begin{align*}
+  V_{\mathbb{K}}^{n_{1}+n_{2}}(f)(E_{1} \oplus E_{2})
+  &=
+  V_{\mathbb{K}}^{n_{1}}(f)(E_{1})
+  \oplus
+  V_{\mathbb{K}}^{n_{2}}(f)(E_{2})
+\end{align*}
+as vector bundles. Thus setting
+\begin{align*}
+  V_{\mathbb{K}}(B)
+  &:=
+  \bigcup_{n \in \mathbb{N}}
+  V_{\mathbb{K}}^{n}(B)
+  \\
+  V_{\mathbb{K}}(f)
+  &:=
+  V_{\mathbb{K}}^{n}(f)
+\end{align*}
+for maps $f \colon B_{2} \to B_{1}$ and $n$-dimensional vector bundles $E_{1}$ over $B_{1}$ it is not to hard to see that $V_{\mathbb{K}}$ is a contravariant functor from $\mathbf{Top-cH}$ to $\mathbf{CMon}$ with respect to the direct sum of vector bundles.

@@ -1,0 +1,145 @@
+\nocite{8b5861fc}
+Category theory is a very general theory with a generality at the same level of set theory and homotpy theory. That is, general enough to serve as a {\glqq}foundation of mathematics{\grqq}. We do not intend to fly so high here but rather think of it as an abstraction of functions w.r.t. monoid-like behavior of function composition. This already allows for a definition of isomorphism. Together with the notion of functors which can be thought of as functions between categories this yields an easy and useful framework for classification.
+\\
+Now we define a \textbf{category} $\mathbf{C}$ as a \textit{class}\footnote{the reader who is not familiar with classes think of it in a naive way as just a collection of sets - it is a hack to avoid {\glqq}size issues{\grqq}} $\mathrm{ob}_{\mathbf{C}}$ together with sets $\mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})$ and functions\footnote{following the convention we mostly write $f_{23} \circ f_{12}$ for $\circ[X_{1},X_{2},X_{3}](f_{12},f_{23})$ if no confusion has to be feared}
+\begin{align*}
+  \circ[X_{1},X_{2},X_{2}]
+  \colon
+  \mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})
+  \times
+  \mathrm{mor}_{\mathbf{C}}(X_{2},X_{3})
+  \to
+  \mathrm{mor}_{\mathbf{C}}(X_{1},X_{3})
+\end{align*}
+for any $X_{1},X_{2},X_{3} \in \mathrm{ob}_{\mathbf{C}}$ such that
+\begin{enumerate}
+\item[(C1)]
+for all $f_{ij} \in \mathrm{mor}_{\mathbf{C}}(X_{i},X_{j})$ and $X_{1},X_{2},X_{3},X_{4} \in \mathrm{ob}_{\mathbf{C}}$
+\begin{align*}
+  f_{34}
+  \circ
+  (f_{23} \circ f_{12})
+  &=
+  (f_{34} \circ f_{23})
+  \circ
+  f_{12}
+\end{align*}
+\item[(C2)]
+for each $X_{1} \in \mathrm{ob}_{\mathbf{C}}$ there is an element $\mathrm{id}_{X_{1}} \in \mathrm{mor}_{\mathbf{C}}(X_{1},X_{1})$ such that for each $f_{12} \in \mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})$ and each $f_{21} \in \mathrm{mor}_{\mathbf{C}}(X_{2},X_{1})$ with $X_{2} \in \mathrm{ob}_{\mathbf{C}}$ both
+\begin{align*}
+  f_{12}
+  \circ
+  \mathrm{id}_{X_{1}}
+  =
+  f_{12}
+  \qquad
+  &\text{and}
+  \qquad
+  \mathrm{id}_{X_{2}}
+  \circ
+  f_{21}
+  =
+  f_{21}
+\end{align*}
+hold
+\end{enumerate}
+Elements in $\mathrm{ob}_{\mathbf{C}}$ are called \textbf{objects (of $\mathbf{C}$)}, $\mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})$ are called \textbf{morphisms (of $\mathbf{C}$ between $X_{1}$ and $X_{2}$)} and $\circ$ is called \textbf{composition}. It should be clear that objects are abstractions of structered sets/spaces and morphisms are abstractions of structure-preserving functions/maps. An example is the category $\mathbf{Set}$ with objects all the sets and morphisms the functions between them. There are plenty of other examples. Here is a list of basic categories we will use in these notes (among other):
+\begin{enumerate}
+\item[$\bullet$]
+  $\mathbf{CMon}$: the category of commutative monoids with objects the commutative monoids and morphisms the monoid homomorphisms
+\item[$\bullet$]
+  $\mathbf{Ab}$: the category of abelian groups with objects the abelian groups and morphisms the group homomorphisms
+\item[$\bullet$]
+  $\mathbf{Rng}$: the category of pseudorings with objects the pseudorings and morphisms the pseudoring homomorphisms
+\item[$\bullet$]
+  $\mathbf{Ring}$: the category of rings with objects the rings and morphisms the ring homomorphisms
+\item[$\bullet$]
+  $\mathbf{Top}$: the category of topological spaces with objects the topological spaces and morphisms the continuous functions
+\item[$\bullet$]
+  $\mathbf{Top-cH}$: the category of compact Hausdorff spaces with objects the compact Hausdorff spaces and morphisms the continuous functions (as a subcategory of $\mathbf{Top}$)
+\end{enumerate}
+It is straight forward to define isomorphism: if a morphism $f_{12} \in \mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})$ has an \textbf{inverse} element $f_{21} \in \mathrm{mor}_{\mathbf{C}}(X_{2},X_{1})$ in the sense of
+\begin{align*}
+  f_{21}
+  \circ
+  f_{12}
+  =
+  \mathrm{id}_{X_{1}}
+  \qquad
+  &\text{and}
+  \qquad
+  f_{12}
+  \circ
+  f_{21}
+  =
+  \mathrm{id}_{X_{2}}
+\end{align*}
+we write $f_{12}^{-1}$ for $f_{21}$ andsay $f_{12}$ is an \textbf{isomorphism (of $\mathbf{C}$)}. Moreover we say that $X_{1},X_{2}$ are \textbf{isomorphic} in that case. Isomorphisms formalize the notion of \textit{structural equality} extending the usual set-theoretic notion of \textit{material} equality. We occassionaly use that by saying things are {\glqq}equal (as){\grqq} even if they are only isomorphic and in an abuse of notation write $=$ when we should write something like $\cong$. While this can be good for high-level discussions like ours it has the downside of collapsing information which plague us a bit later.\footnote{for a solution of this problem have a look at homotpy type theory}.
+\\
+If we now could relate two categories in a way preserving the category structure - particularly isormophisms - then we could relate two mathematical theories like $\mathbf{Top}$ and $\mathbf{Ab}$ preserving isomorphism classes of objects. The contrapositive apparently yields an easy criterion of when two objects in the source cannot be isomorphic. Namely if their images in the target are not. The whole idea of algebraic topology is to take a topological category like $\mathbf{Top}$ as source and an algebraic category like $\mathbf{Ab}$ as target. But how can two categories $\mathbf{C},\hat{\mathbf{C}}$ be related in such a way? The answer is by functors: a \textbf{covariant functor} $F$ is a function that assigns to any object $X$ of $\mathbf{C}$ exactly one object $F(X)$ in $\hat{\mathbf{C}}$ and to each $f \in \mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})$ a morphism $F(f)$ in $\mathrm{mor}_{\hat{\mathbf{C}}}(F(X_{1}),F(X_{2}))$ such that
+\begin{enumerate}
+\item[(F1)]
+for all $X \in \mathrm{ob}_{\mathbf{C}}$
+\begin{align*}
+  F(\mathrm{id}_{X})
+  &=
+  \mathrm{id}_{F(X)}
+\end{align*}
+\item[(F2)]
+for all $f_{ij} \in \mathrm{mor}_{\mathbf{C}}(X_{i},X_{j})$ and $X_{1},X_{2},X_{3} \in \mathrm{ob}_{\mathbf{C}}$
+\begin{align*}
+  F(f_{23} \circ f_{12})
+  &=
+  F(f_{23})
+  \circ
+  F(f_{12}) 
+\end{align*}
+\end{enumerate}
+A \textbf{contravariant functor} is defined similiarly. The difference is that it maps morphisms $f \in \mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})$ to morphisms $F(f) \in \mathrm{mor}_{\hat{\mathbf{C}}}(F(X_{2}),F(X_{1}))$. Hence (F2) has to be replaced by
+\begin{enumerate}
+\item[(F2$^{\prime}$)]
+for all $f_{ij} \in \mathrm{mor}_{\mathbf{C}}(X_{i},X_{j})$ and $X_{1},X_{2},X_{3} \in \mathrm{ob}_{\mathbf{C}}$
+\begin{align*}
+  F(f_{23} \circ f_{12})
+  &=
+  F(f_{12})
+  \circ
+  F(f_{23}) 
+\end{align*}
+\end{enumerate}
+We often just say functor if co- and contravariance doesn't matter. As an example, the constant functor $F \colon \mathbf{Set} \to \mathbf{Set}$ that assigns to each object a fixed set $X$ and to each morphism the identity $\mathrm{id}_{X}$ is apparently both co- and contravariant. The perhaps most interesting property of functors is
+\\
+\begin{thm}
+\label{thm:catiso}
+Let $F \colon \mathbf{C} \to \hat{\mathbf{C}}$ be a functor. If $f \in \mathrm{mor}_{\mathbf{C}}(X_{1},X_{2})$ is an isomophism so is $F(f)$.
+\end{thm}
+\begin{prf}
+If $F$ is covariant we have
+\begin{align*}
+  F(f)
+  \circ
+  F(f^{-1})
+  &=
+  F(f \circ f^{-1})
+  =
+  F(\mathrm{id}_{X_{2}})
+  =
+  \mathrm{id}_{F(X_{2})}
+  \\
+  F(f^{-1})
+  \circ
+  F(f)
+  &=
+  F(f^{-1} \circ f)
+  =
+  F(\mathrm{id}_{X_{1}})
+  =
+  \mathrm{id}_{F(X_{1})}
+\end{align*}
+which proves the proposition in this case. The other one is evident now.
+\\
+\phantom{proven}
+\hfill
+$\square$
+\end{prf}
+As mentioned theorem \ref{thm:catiso} is the backbone of classification in algebraic topology and hence utterly useful for the classification of topological phases.

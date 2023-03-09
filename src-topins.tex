@@ -1,0 +1,596 @@
+\nocite{0e533eef}
+\nocite{3e24354b}
+\nocite{37e40023}
+\nocite{5cb8b651}
+\nocite{9104a30f}
+\nocite{99aba7f6}
+\nocite{9fc084b2}
+\nocite{c9fb3de7}
+\nocite{ce883d84}
+\nocite{d02f3620}
+\nocite{eda79af1}
+\nocite{f94459b0}
+\nocite{5914f1ad}
+In this section we want to give the reader an idea of what a topological insulator is. As the name, suggests both topology and insulators play a role and therefore the section is essentialy divided into two parts: a first part concerning insulators and a second one concerning their topological aspect. In the first part we treat ordinary insulators. We will present the standard mathematical model of insulators leveraging a Bloch-Floquet transformation. Explicitly using a Bloch-Floquet transformation is advantageous because it will make topological information of the insulator accessible as it allows to construct a vector bundle exhibiting a potentially interesting topology. In fact, we will sketch the bundle construction after talking about insulators as it provides the basis of our treatment of topological insulators. Equipped with the bundle we move on to the second part. There, after briefly discussing the phenomenom of topological phases and their K-theoretic classification in general we treat the special case of so-called Chern insualtors by examining their topological structure by means of topological K-theory on that bundle. In particular, we will identify the integer quantum Hall effect as part of two-dimensional Chern insulators with the help of Chern classes.
+\\
+\begin{rem}
+\label{rem:blochfloquet}
+As a side note let us say that the curious reader who is interested in the details about the construction regarding the aformentioned bundle by means of Bloch-Floquet transforming is referred to \cite{9fc084b2}, \cite{d02f3620} and \cite{ce883d84}. The latter paper is about the generalization of the Bloch-Floquet transformation for arbitrary separable Hilbert spaces.
+\\
+\phantom{proven}
+\hfill
+$\square$
+\\
+\end{rem}
+Let us start out talking about ordinary insulators in that first part. In physics, an insulator is a crystalline solid with very low electrical conductivity. To make that definition accessible to theoretical considerations we will present a mathematical model of {\glqq}crystalline solid{\grqq} and explain what it means for such a solid to have {\glqq}low electrical conductivity{\grqq} now.
+\\
+For many purposes it suffices to consider a crystalline solid to be an (infinite) periodic arrangement of atomic nuclei. The standard approach is to model the perodicity with a so-called lattice and the arrangement of atomic nuclei as a so-called basis\footnote{a really unfortunate naming w.r.t. a mathematical model involving vector spaces which use the term {\glqq}basis{\grqq} differently} assigning the sort of atomic nuclei to a position in an area modulo the periodicity of the lattice. This model is usually justified if the number of atomic nuclei is very large and the temperature is near (absolute) zero. While the former is almost always the case the latter is usually only in very special environments but for a first approach to (topological) insulators it is ok.
+\\
+Formally, an \textbf{($n$-dimensional) lattice} is a subspace $L$ of $\mathbb{R}^{n}$ such that there is a basis $l_{1},\ldots,l_{n} \in \mathbb{R}^{n}$ of $\mathbb{R}^{n}$ satisfying $L = \mathrm{span}_{\mathbb{Z}}(l_{1},\ldots,l_{n})$. In particular, $L$ is a group operating on $\mathbb{R}^{n}$ by $(l,x) \mapsto l + x$ and $F_{L} := \mathrm{span}_{[0,1)}(l_{1},\ldots,l_{n})$ is a fundamental domain w.r.t. that group action\footnote{remember that a fundamental domain w.r.t. a group action $\phi$ is a connected subspace of the space $\phi$ operates which contains precisely one elemnt of each orbit of $\phi$} (representing an area modulo the periodicity of the lattice). Next, let $\mathfrak{C}$ (representing the positions of atomic nuclei) be a finite subset of $F_{L}$ and let $\mathsf{A}$ (representing the sorts of atomic nuclei) be finite then a \textbf{c-basis (for $L$)} is defined as a function $\mathfrak{C} \to \mathsf{A}$. Now a \textbf{crystal structure} is a lattice $L$ together with a c-basis for $L$. Now there is one important notion w.r.t. crystal structures we will need: the Brilloiun zone (with its close relation to the momentum space). To this end we note that to a given lattice $L$ there is a\footnote{remember that $\mathbb{R}^{n}$ is self dual, that is, $(\mathbb{R}^{n})^{\prime}= \mathcal{L}(\mathbb{R}^{n},\mathbb{R}) = \mathbb{R}^{n}$ as vector spaces} \textbf{dual lattice $L^{\prime}$} given by\begin{align*}
+  L^{\prime}
+  &=
+  \lbrace
+      k
+      \in
+      \mathbb{R}^{n}
+    \colon
+      \forall
+      x
+      \in
+      L
+      \,
+      (k \vert x)
+      \in 
+      2\pi
+      \mathbb{Z}
+  \rbrace
+\end{align*}
+In particular, there is a dual basis $l_{1}^{\prime},\ldots,l_{n}^{\prime} \in \mathbb{R}^{n}$ defined by $(l_{i}^{\prime} \vert l_{j}) = 2\pi\delta_{ij}$. The \textbf{Brillouin zone $B_{L}$} is the topological closure of the fundamental domain $F_{{L}^{\prime}} = \mathrm{span}_{[-1/2,1/2)}(l_{1}^{\prime},\ldots,l_{n}^{\prime})$ writiten $B_{L} = \mathrm{cl}(F_{L^{\prime}})$.
+\\
+Having a model of crystalline solids we can also take the quantum mechanic nature of the atomic nuclei into account. In our model, the atomic nuclei and their periodic occurences will generate a periodic potential $V$. As a superposition of coulomb-like potentials, for example. Moreover, it is clear that the quantum system is subjected to a translational symmetry, at least, due to it periodicity.
+\\
+Formally, remember that a \textbf{symmetry (transformation)} on a complex and separable Hilbert space $(\mathcal{H},(\cdot \vert \cdot)_{\mathcal{H}})$ is a surjective function $S \colon \mathcal{H} \to \mathcal{H}$ such that
+\begin{align*}
+  \vert
+    (S(\psi_{1}) \vert S(\psi_{2}))
+  \vert
+  &=
+  \vert
+    (\psi_{1} \vert \psi_{2})
+  \vert
+\end{align*}
+for all $\psi_{1},\psi_{2} \in \mathcal{H}$ and that the symmetry transformations together with composition make up a group: the \textbf{symmetry group $G_{\mathcal{H}}$}. According to Wigner's Theorem, there is a unitary or antiunitary operator $U_{S} \colon \mathcal{H} \to \mathcal{H}$ for each $S \in G_{\mathcal{H}}$ such that
+\begin{align*}
+  S(\psi)
+  &=
+  \exp(\mathrm{i}\varphi) U_{S}(\psi)
+\end{align*}
+for all $\psi \in \mathcal{H}$ and some $\exp(\mathrm{i}\varphi) \in \mathbb{C}$. Further remember that a quantum system is represented by a self-adjoint, linear operator $H \colon \mathrm{dom}(H) \to \mathcal{H}$ - the Hamilton operator - where $\mathrm{dom}(H)$ is a dense subset of the complex and separable Hilbert space $\mathcal{H}$. A \textbf{symmetry (of $H$)} then is an $S \in G_{\mathcal{H}}$ such that
+\begin{align*}
+  U_{S}(\mathrm{dom}(H))
+  &=
+  \mathrm{dom}(H)
+\end{align*}
+and such that $U_{S}$ either commutes or anticommutes with $H$ depending on whether $U_{S}$ is unitary or antiunitary. Restricting our attention to $\mathcal{H} = L_{2}(\mathbb{R}^{n},\mathbb{C})$ we can consider \textbf{periodic potentials}, i.e. $2$-locally lebesgue integrable functions $V \in L_{2,\textrm{loc}}(\mathbb{R}^{n},\mathbb{R})$ such that $V(x + l) = V(x)$ for $l \in L$ and some $n$-dimensional lattice $L$. Then the Hamilton operator we are interested
+\begin{align*}
+  H
+  &:=
+  H_{0}
+  +
+  M_{V}
+  :=
+  -
+  \frac{1}{2}
+  \Delta
+  +
+  M_{V}
+\end{align*}
+is a self-adjoint operator if $M_{V}$ is the multiplication operator associated to $V$ and if $\Delta$ is the Laplace operator. Since $H$ commutes with the translation operators defined by $T_{l}\psi := \psi(\cdot - l)$ it has a translational symmetry, at least.
+\\
+To finally understand crytalline solids quantum mechanically we have to solve the Schr{\"o}dinger equation for the above Hamiltonians. We present a way leveraging a so-called Bloch-Floquet transformation as mentioned earlier and spectral theory. For Schwartz functions $f \in \mathcal{S}(\mathbb{R}^{n},\mathbb{C})$ one defines the \textbf{modified Bloch-Floquet tranformation}
+\begin{align*}
+  \mathcal{U}
+  \colon
+  \mathcal{S}(\mathbb{R}^{n},\mathbb{C})
+  \to
+  L_{2}(B_{L},L_{2}(\mathrm{cl}(F_{L}),\mathbb{C}))
+  ,\qquad
+  f
+  \mapsto
+  (\mathcal{U}(f))(k)
+  &:=
+  \frac{1}{\sqrt{\mathrm{vol}_{n}(B_{L})}}
+  \sum_{l \in L}
+  \exp(\mathrm{i}(k \vert \cdot - l))
+  f(\cdot - l)
+\end{align*}
+$\mathcal{U}$ can be extended to a unitary, linear operator on $L_{2}(\mathbb{R}^{n},\mathbb{C})$. The modified Bloch-Floquet transformation plays a similar role for $H$ as the Fourier transformation does for $-\frac{1}{2}\Delta$ in the sense that it helps to solve the Schroedinger equation for $H$ by mapping the problem into the momentum space: $\mathcal{U}H\mathcal{U}^{-1}$ equals the \textit{fibered operator} $\int_{k \in B_{L}}^{\oplus}\tilde{H}(k)$ where $\tilde{H}$ is a certain function on $B_{L}$. $\int_{k \in B_{L}}^{\oplus}$ means \textit{direct integral}. We do not want to elaborate on a definition but only say that they are a generalization of the direct sum. However, the important thing to note is that
+\begin{align*}
+  \tilde{H}(k)
+  &=
+  -
+  \mathrm{i}(\nabla + k \cdot \mathrm{id})^{2}/2
+  +
+  M_{V}
+\end{align*}
+is a densly defined, self-adjoint, linear operator for each (momentum) $k \in B_{L}$ with domain
+\begin{align*}
+  \mathrm{dom}(\tilde{H}(k))
+  &=
+  H_{2}(\mathrm{cl}(F_{L}),\mathbb{C})
+\end{align*}
+the according second Sobolev space. And that, by spectral theory, the (energy) spectrum $\sigma(\tilde{H}(k_{0}))$ of $\tilde{H}(k_{0})$ for each $k_{0} \in B_{L}$ is a pure point spectrum, i.e. it consists of the eigenvalues $E_{i}(k_{0}) \in \mathbb{R}$ with $i \in \mathbb{N}$ of $\tilde{H}(k_{0})$. Of course, w.l.o.g. we assume $E_{i}(k_{0}) \leq E_{i+1}(k_{0})$ for all $i$. Anyways,
+\begin{align*}
+  \mathrm{im}(E_{i})
+  &=
+  \bigcup_{k \in B_{L}}\lbrace E_{i}(k) \rbrace
+\end{align*}
+is a compact interval for each $i$ since it can be shown that $E_{i}$ is a continous function on $B_{L}$. $\mathrm{im}(E_{i})$ is called \textbf{($i$-th spectral) band} and the (countable) union of all those bands finally equals the spectrum $\sigma(H)$ of $H$. If two adjacent bands - that is, bands with index $i$ and $i+1$ - have empty intersection one says there is a \textbf{(spectral) gap} between those bands. All in all, we ended up with the so-called band-model of crystalline solids wll-known in physics.
+\\
+We have two remarks at this point:
+\begin{enumerate}
+\item
+  Note that the \textit{direct integral decomposition} allows for the decomposition of the spectrum of $H$ according to the \textit{crystal momentum $k$}. This will make some topology information apparent in the second part.
+\item
+  Note that the ideas above also apply to Hamilton operators where $H_{0}$ is replaced by $\frac{1}{2}(-\mathrm{i}\nabla + M_{A})^{2}$ or $\frac{1}{2}((-\mathrm{i}\nabla + M_{A}) \cdot \sigma)^{2}$ if $A \colon \mathbb{R}^{n} \to \mathbb{R}^{n}$ satisfies $A(x + l) = A(x)$ for $l \in L$ and if $\sigma$ equals $(\sigma_{1},\sigma_{2},\sigma_{3})$ with $\sigma_{i}$ the usual Pauli-matrices. $A$ is meant to abstract a magnetic vector potential and $\sigma$ takes the particle's spin into account. However, the idea of the modified Bloch-Floquet transform and the spectral bands stays the same and the changes are minor.
+%\item
+%  Using the tensor product $\otimes$ we can describe $N$ non-interacting, identical particles by the operator $\sum_{i=1}^{N}H_{(i)}$ defined on $\bigotimes_{i=1}^{N}\mathrm{dom}(H_{(i)})$ where $H_{(i)} = \bigotimes_{j=1}^{N}O_{j}$ with $O_{i} = H$ and the other $O_{j}$ being the identity.
+\end{enumerate}
+Equipped with the notion of energy bands we can declare what we consider an insulator: If the \textit{Fermi-level} lies in a band gap we say that a crystal structure is an \textbf{insulator}. We refrain fro giving a formal definition of Fermi-level here but content ourselves with the heuristic explanation that the Fermi-level at temperature zero is the energy such that precisely the states below the Fermi-level are fully occupied and the ones above fully unoccupied. This also justifies the definition of insualtor - at temperature zero, at least - because electrical conductivity would need unoccupied states in a band for charge transport as in a fully occupied band there is for each state/electron with momentum $k$ one with $-k$ resulting in a total electron momentum of $0$ in that band. That is, no electrons are transported and hence no electric current can flow.
+\\
+%\\
+%For the sake of completeness we will give as somewhat informal definition of the Fermi-level. The definition will make use of the finiteness of electrons in a crystalline solid. This is not reflected in our model so far as we implicitly made the (correct) assumption that the number of atomic nuclei is very large and hence approximated the large number with infinity. Most of the time the approximation of crystalline solids with crystal structures exhibiting a band structure on a single particle level actually suffices our needs. Indeed, when nothing other is said, this is assumed. But for our Fermi-level definition we need something slightly more realistic in that regard. Intersecting the $n$-dimensional lattice with an $n$-dimensional cube will do because the number of atomic nuclei is then finite and hence the number of electrons brought in by them to make the crystalline solid electrically neutral must be finite, too.\footnote{in addition, it models boundary as well as a finite volume} We assume these $N$ electrons as non-interacting fermions feeling the potential generated by the (finite number of) atomic nuclei in the crystalline solid. Hence the \textbf{(total) chemical potential} or \textbf{Fermi-level} $E_{F}$ of the this system of fermions is a well-defined thermodynamic quantity: the derivative of the \textit{internal energy} with respect to the particle (or more specifically electron) number $N$.
+\\
+Last but not least in this part we come to the promised vector bundles. The decomposition of the spectrum of $H$ according to the crystal momentum allows to construct a vector bundle. To this end, let $\tilde{I} \subset \mathbb{R}$ be an interval. Further, for $I := \tilde{I} \cap \mathbb{N}$ let
+\begin{align*}
+  \sigma_{I}^{k_{0}}
+  :=
+  \bigcup_{i \in I}
+  \lbrace
+    E_{i}(k_{0})
+  \rbrace
+  \qquad
+  &\text{and}
+  \qquad
+  \sigma_{I}
+  :=
+  \bigcup_{k \in B_{L}}
+  \sigma_{I}^{k}
+  =
+  \bigcup_{i \in I}
+  \mathrm{im}(E_{i})
+\end{align*}
+By functional calculus we get the spectral projections
+\begin{align*}
+  \tilde{P}^{I}(k)
+  &:=
+  \chi_{\sigma_{I}^{k}}(\tilde{H}(k))
+\end{align*}
+if $\chi$ denotes the characteristic function. If $\mathrm{card}(I)$ is finite and if there is a spectral gap above $\max(I)$-th band and below $\min(I)$-th band the family $\lbrace \tilde{P}^{I}(k) \colon k \in B_{L} \rbrace$ and the spectral projection
+\begin{align*}
+  P^{I}
+  &:=
+  \chi_{\sigma_{I}}(H)
+\end{align*}
+respectively, can be identified with a complex vector bundle over $\mathbb{R}^{n}/L^{\prime}$ - the $n$-torus $\mathbb{T}^{n}$: As a topological space the base space is an $n$-dimensional torus. To construct the bundle we define an equivalence relation on $\mathbb{R}^{n} \times L_{2}(\mathbb{R}^{n},\mathbb{C})$ by
+\begin{align*}
+  (k,\psi)
+  \sim
+  (\hat{k},\hat{\psi})
+  \qquad
+  &:\Leftrightarrow
+  \qquad
+  \exists
+  l^{\prime}
+  \in
+  L^{\prime}
+  \colon
+  \,
+  \hat{k}
+  =
+  k
+  -
+  l^{\prime}
+  \quad
+  \land
+  \quad
+  \hat{\psi}(\cdot)
+  =
+  \exp(-\mathrm{i}(l^{\prime} \vert \cdot))
+  \psi(\cdot)
+\end{align*}
+The desired total space is then given by
+\begin{align*}
+  E_{P^{I}}
+  &:=
+  \left\lbrace
+      [(k,\phi)]
+      \in
+      \left(
+        \mathbb{R}^{n}
+        \times
+        L_{2}(\mathbb{R}^{n},\mathbb{C})
+      \right)
+      /
+      \sim
+    \colon
+      \phi
+      \in
+      \mathrm{Ran}(\tilde{P}^{I}(k))
+  \right\rbrace
+\end{align*}
+When it comes to conductivity properties of crystalline solids and their according topology it seems natural to study the vector bundle $E_{P^{F}}$ where $F$ is the set made up by the band indices with energies below the Fermi-level as we have seen that the electronics are determined by the bands around the Fermi-Level. And, in fact, this is a bundle relevant for the topological phases of as we will see in the next part.
+\\\\
+In the second part we want to talk about topological insulators. Heuristically, a topological insulator is an insulator that can have a {\glqq}conducting{\grqq} surface in certain {\glqq}topological phases{\grqq} where the phases are characterized by so called symmetry-protected {\glqq}surface states{\grqq}. That means that those {\glqq}surface states{\grqq} of different phases cannot be {\glqq}deformed{\grqq} into each other without breaking symmetries of the insulators. Anyhow, one of these phases is said to be {\glqq}topologically trivial{\grqq} and describes the ordinary insulating phase whereas the {\glqq}non-trivial{\grqq} ones describe the possibly conducting surface states.
+\\
+Now this is anything but a proper definition with all those quotes. And, in fact, giving a proper definition is not easy. Even worse, as we noted what we have defined to be an insulator is only a first approximation. For example, if the temperature is not near zero the lattice is far from perfect and our description may break. But there are other quirks that can make the model invalid. \cite{5cb8b651} and \cite{f94459b0} concern these problems in detail and put methods from non-commutative geometry to work. This results in a more robust model and is therefore the recent point of view of topological insualtors. Still, we will try to understand topological insualutors on the basis of so-called Chern insulators using more classical theories comprising the insulator-model decribed in the first part, K-theory and Chern classes.
+\\
+\cite{c9fb3de7} develops the classification of topological phases of so called \textit{gapped systems of free fermions subjected to symmetries in $A \subset G_{\mathcal{H}}$} using operator K-theory. Operator K-theory is a generalization of topological K-theory where so called \textit{Banach algebras} replace the topological spaces. Depending on the symmetries of the quantum mechanical system one can construct algebras of this special type and apply operator K-theory to get groups associated to them. The group elements then stand for the different topological phases of gapped systems with the specified symmetries in $A$. Now insulators as defined here are such gapped systems of free fermions. For insulators in $n$ dimensions subjected to time reversal or charge conjungation symmetry or a combination of both or none of them the topological phase classification is provided in table \ref{tab:pt}.
+\begin{table}[h!]
+\begin{tabular}{cccccccccc}
+  \hline
+  $m$
+  &
+  Cartan label
+  &
+  $n=0$
+  &
+  $n=1$
+  &
+  $n=2$
+  &
+  $n=3$
+  &
+  $n=4$
+  &
+  $\cdots$
+  &
+  $n=8$
+  &
+  $\cdots$
+  \\
+  \hline
+  $0$
+  &
+  AI
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $0$
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  &
+  $\mathbb{Z}$
+  &
+  \\
+  $1$
+  &
+  BDI
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $0$
+  &
+  $0$
+  &
+  &
+  $\mathbb{Z}_{2}$
+  &
+  \\
+  $2$
+  &
+  D
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $0$
+  &
+  &
+  $\mathbb{Z}_{2}$
+  &
+  \\
+  $3$
+  &
+  DIII
+  &
+  $0$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  &
+  $0$
+  &
+  \\
+  $4$
+  &
+  AII
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}$
+  &
+  &
+  $\mathbb{Z}$
+  &
+  \\
+  $5$
+  &
+  CII
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  &
+  $0$
+  &
+  \\
+  $6$
+  &
+  C
+  &
+  $0$
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $\mathbb{Z}_{2}$
+  &
+  &
+  $0$
+  &
+  \\
+  $7$
+  &
+  CI
+  &
+  $0$
+  &
+  $0$
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  &
+  $0$
+  &
+  \\
+  \hline
+  \hline
+  $0$
+  &
+  A
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  &
+  $\mathbb{Z}$
+  &
+  \\
+  $1$
+  &
+  AIII
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  $\mathbb{Z}$
+  &
+  $0$
+  &
+  &
+  $0$
+  \\
+  \hline
+  \\
+\end{tabular}
+\caption{Periodic table for topological phases of insulators in $n$ dimension with symmetry data indicated by the Cartan label, see \cite{9104a30f} for example}
+\label{tab:pt}
+\end{table}
+The groups appearing in table \ref{tab:pt} are precisely $K_{\mathbb{K}}^{n-m}(\lbrace x_{0} \rbrace)$, that is, topological K-theory of a point, where $\mathbb{K}$ equals $\mathbb{C}$ for Cartan labels A and AIII. Otherwise $\mathbb{K}$ equals $\mathbb{R}$.
+\\
+To get a better feeling for the classification we restrict our attention to insulators with Cartan label A where neither a time reversal nor a charge conjungation symmetry is present. They are called \textbf{Chern insulators} because the classification of the topological phases is due to \textit{Chern numbers}. The rest of the section is a glimpse on how.
+\\
+Note that the topological phases of $n$-dimensional Chern insulators are classified by $K_{\mathbb{C}}^{n}(\lbrace x_{0} \rbrace)$. On the other for an insulator we have the vector bundle $E_{P^{F}}$ over the $n$-torus $\mathbb{T}^{n}$ holding some topological information about the insulator. And, magically, the stable isomorphism class of $E_{P^{F}}$ determines its topological phase as Chern insulator because in subsection \ref{sec:topktheory} we have seen that
+\begin{align*}
+  K_{\mathbb{C}}^{0}(\mathbb{T}^{n})
+  &=
+  K_{\mathbb{C}}^{n}(\lbrace x_{0} \rbrace)
+  \oplus
+  \bigoplus_{j=0}^{n-1}
+  K_{\mathbb{C}}^{j}(\lbrace x_{0} \rbrace)^{\binom{n}{j}}
+\end{align*}
+holds.\footnote{the remaining summands relate to the phenomenom of \textit{weak} topological insulators, by the way}  This is a striking result although we cannot relate it directly to geometry as mentioned in subsection \ref{sec:topktheory}. We will make up for this a bit in the rest of the section. 
+\\
+Namely one can calculate the invaraint by more analytical methods via the differential geometric point of view on Chern class if $X$ is also a manifold (like the torus $\mathbb{T}^{n}$). While we will not pay much attention to it Chern classes do really bear geometrical meaning in the framework of topological K-theory. Though the geomtric aspect of Chern classes is easiest to see in a differential geometric definition as it is a quantity derived from the curvature of a bundle. More precisely, let $(E,X,p,\mathbb{C}^{n})$ be a \textit{hermitian}, \textit{smooth} and complex vector bundle over a compact manifold $X$ then there is a \textit{curvature form} $\Omega_{E}$ and one can define the \textbf{$n$-th Chern class (of $E \in V_{\mathbb{C}}(X)$)} $c_{n}(E)$ for all $n \in \mathbb{N}$ by the characteristic polynomial
+\begin{align*}
+  \det
+  \left(
+    \frac{\mathrm{i}t\Omega_{E}}{2\pi}
+    +
+    \mathrm{id}
+  \right)
+  &=:
+  \sum_{n=0}^{\infty}
+  c_{n}(E)
+  t^{n}
+\end{align*}
+For the first few terms one gets
+\begin{align*}
+  \sum_{n=0}^{\infty}
+  c_{n}(E)
+  t^{n}
+  &=
+  \mathrm{id}
+  +
+  \mathrm{i}
+  \frac{\mathrm{tr}(\Omega_{E})}{2\pi}
+  t
+  +
+  \frac{\mathrm{tr}(\Omega_{E}^{2}) - \mathrm{tr}(\Omega_{E})^{2}}{8\pi^{2}}
+  t^{2}
+  +
+  \ldots
+\end{align*}
+where $\mathrm{tr}(\cdot)$ is the trace. If further the compact manifold $X$ has dimension $2d$ and if $X$ is \textit{oriented} then for any partition $D := (d_{1},\ldots,d_{r}) \in \mathbb{N}^{r}$ of $d$, that is, $d = \sum_{j}d_{j}$, the \textbf{$D$-th Chern number} is defined as $c_{D}(E) := c_{d_{1}}(E) \cdots c_{d_{r}}(E)$. Importantly, one can show\footnote{this has to do with homology: if you are curious the keywords are de Rham cohomology and Kronecker pairing}
+\begin{align*}
+  \int_{X}
+  c_{D}(E)
+  \in
+  \mathbb{Z}
+\end{align*}
+in this setting. And, finally, the topological phase of Chern insulators in $n = 2d$ dimensions is given by the $(d,0)$-th Chern number of the vector bundle $E_{P^{F}}$ and is calculated by the just mentioned formula
+\begin{align*}
+  \mathrm{Ch}_{d}(P^{F})
+  &:=
+  \int_{\mathbb{T}^{n}}
+  c_{1}(E_{P^{F}})^{d}
+  \in
+  K_{\mathbb{C}}^{n}(\lbrace x_{0} \rbrace)
+\end{align*}
+For $n = 2$ this simplifies to
+\begin{align*}
+  \mathrm{Ch}_{1}(P^{F})
+  &=
+  \frac{\mathrm{i}}{2\pi}
+  \int_{\mathbb{T}^{2}}
+  \mathrm{tr}
+  \left(
+    \tilde{P}^{F}
+    \cdot
+    [\partial_{1}\tilde{P}^{F},\partial_{2}\tilde{P}^{F}]
+  \right)
+  \mathrm{d}k
+  \in
+  K_{\mathbb{C}}^{2}(\lbrace x_{0} \rbrace)
+\end{align*}
+where $[\cdot,\cdot]$ is the commutator. This is the integer quantum hall effect and the Hall conductance is given by $\frac{e^{2}}{h}\mathrm{Ch}_{1}(P^{F})$. By the way, the integrals - especially for $n = 2$ - has a striking resemblance to the Gau{\ss}-Bonnet-theorem: the integration of a quantity related to curvature yields a topological invariant.
+\\
+We conclude with a remark regarding a link of K-theory and Chern classes.
+\\
+\begin{rem}
+\label{rem:chchar}
+There is a more general and axiomatic definition of Chern classes working for Vector bundles with base space compact Hausdorff. It is in terms of singular cohomology, that is, a certain covariant functor $H_{\mathbb{Q}}^{2\ast}$ from $\mathbf{Top-cH}$ to $\mathbf{Ring}$: The $n$-th Chern class $c_{n}(E)$ of $E \in V_{\mathbb{C}}(X)$ is the the $n$-th element in a unique sequence of functions
+\begin{align*}
+  \left(
+    c_{n}
+    \colon
+    V_{\mathbb{C}}(X)
+    \to
+    H_{\mathbb{Q}}^{2\ast}(X)
+  \right)_{n\in\mathbb{N}}
+\end{align*}
+satisfying certain axioms. We do not elaborate on that axoimatization here but take it for granted to define the Chern character. For that purpose let $s_{i}$ with $i \in \mathbb{N}^{\times}$ be the \textit{Newton polynomials}. Then the \textit{Chern character $\mathrm{ch}(\cdot)$} is defined by
+\begin{align*}
+  \mathrm{ch}
+  &\colon
+   V_{\mathbb{C}}(X)
+  \to
+  H_{\mathbb{Q}}^{2\ast}(X)
+  ,\qquad
+  (E,X,p,\mathbb{C}^{n})
+  \mapsto
+  \mathrm{dim}(\mathbb{C}^{n})
+  +
+  \sum_{i=1}^{\infty}
+  \frac{s_{i}(c_{1}(E),\ldots,c_{i}(E))}{i!}
+\end{align*}
+Here the first few terms are given by
+\begin{align*}
+  \mathrm{ch}(E)
+  &=
+  n
+  +
+  c_{1}(E)
+  +
+  \frac{1}{2}
+  (c_{1}(E)^{2} - 2c_{2}(E))
+  +
+  \ldots
+\end{align*}
+In particular, for $X$ a compact manifold we get
+\begin{align*}
+  \mathrm{ch}(E)
+  &=
+  \mathrm{tr}(\exp(\mathrm{i}\Omega_{E}/2\pi))
+\end{align*}
+as one can verify from the above for the first few terms. Either way the Chern character satisfies
+\begin{align*}
+  \mathrm{ch}(E_{1} \oplus E_{2})
+  =
+  \mathrm{ch}(E_{1})
+  +
+  \mathrm{ch}(E_{2})
+  \qquad
+  &\text{and}
+  \qquad
+  \mathrm{ch}(E_{1} \otimes E_{2})
+  =
+  \mathrm{ch}(E_{1})
+  \mathrm{ch}(E_{2})
+\end{align*}
+Finally, one can define a natural transformation from $K_{\mathbb{C}}^{0}$ and $H_{\mathbb{Q}}^{2\ast}$ by $\widetilde{\mathrm{ch}}$ satisfying
+\begin{align*}
+  \widetilde{\mathrm{ch}}([(E,\epsilon^{0})])
+  &:=
+  \mathrm{ch}(E)
+\end{align*} for $[(E,\epsilon^{0})] \in K_{\mathbb{C}}(X)$ unveiling a link between topological K-theory and Chern classes. In case of the integer quantum Hall effect the Chern character of the corresponding bundle $E_{P^{F}}$ is
+\begin{align*}
+  \mathrm{ch}(E_{P^{F}})
+  &=
+  c_{1}(E_{P^{F}})
+  +
+  \mathrm{dim}(E_{P^{F}})
+\end{align*}
+reflecting the direct sum decomposition of $K_{\mathbb{C}}^{0}(\mathbb{T}^{2})$. Just note that the summand $K_{\mathbb{C}}^{0}(\lbrace x_{0} \rbrace)$ determines the dimension of the representatives of $[E]_{s} \in K_{\mathbb{C}}^{0}(\mathbb{T}^{n})$.
+\end{rem}

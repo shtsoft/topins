@@ -1,0 +1,384 @@
+\nocite{6342e665}
+\nocite{8b5861fc}
+\nocite{c7f15065}
+K-theory is not an axoimatized term. There are different branches in mathematics that use this term, e.g. topological K-theory, operator K-theory or algebraic K-theory. While they share similiar notions and even coincide in special cases their foundations are manifold which makes it difficult to cleanly define K-theory. Historically, the beginning of K-theory is the Grothendieck group we introduced in subsection \ref{sec:grothengr}. Therefore K-theories should make use of this construction in some way to deserve the name. To give K-theory kind of a meaning one can perhaps say that a K-theory is a family of covariant functors $(K_{n})_{n\in\mathbb{Z}}$ or contravariant functors $(K^{n})_{n\in\mathbb{Z}}$ into a category of some algebraic structure such that $K_{0}$ and $K^{0}$, respectively, involves the Grothendieck group in some way. The easiest K-theory in that sense is perhaps topological K-theory to whose basics we restrict our attention here as it will do to get a rough understanding of topological insulators.
+\\
+Topological K-theory studies topological properties of vector bundles on the basis that vector bundles make up a commutative monoid w.r.t. to the direct sum over compact Hausdorff spaces as we have seen in subsection \ref{sec:vb}. So let $X$ be compact Hausdorff. Then $V_{\mathbb{K}}(X)$ is a commutative monoid with respect to the direct sum and we can build the Grothendieck group $G(V_{\mathbb{K}}(X))$ written as $K_{\mathbb{K}}^{0}(X)$ or shorter $K_{\mathbb{K}}(X)$.
+\begin{align*}
+  K_{\mathbb{K}}^{0}
+  &:=
+  K_{\mathbb{K}}
+  :=
+  G
+  \circ
+  V_{\mathbb{K}}
+\end{align*}
+is a contravariant functor from $\mathbf{Top-cH}$ to $\mathbf{Ab}$ - actually even $\mathbf{Ring}$ leveraging the tensor product on vector bundles - because the composition of a covariant and contravariant functor is contravariant. Note that since $X$ is assumed to be compact Hausdorff it is evident from proposition \ref{prp:vbtriv} that any element of $K_{\mathbb{K}}(X)$ can be represented by some $(E,\epsilon^{m})$.
+\\
+\begin{rem}
+\label{rem:stableiso}
+As an interesting side note not needed in these notes but helpful to gain some intuition let us remark that the factorization of $K_{\mathbb{K}}(X)$ can be refined. Going one step back, we revisit the process of building the Grothendieck group. Instead of applying $G$ to $V_{\mathbb{K}}(X)$ directly we apply $G$ to $V_{\mathbb{K}}(X)/\sim_{s}$ where $\sim_{s}$ means vector bundles $E_{1},E_{2}$ are \textbf{stably ismorphic} if and only if there is a trivial bundle $\epsilon^{m}$ such that
+\begin{align*}
+  E_{1}
+  \oplus
+  \epsilon^{m}
+  &=
+  E_{2}
+  \oplus
+  \epsilon^{m}
+\end{align*}
+  as vector bundles. $\sim_{s}$ is clearly an equivalence relation and $V_{\mathbb{K}}(X)/\sim_{s}$ is a commutative monoid with respect to the addition induced by $\oplus$. It can be shown that \begin{align*}
+  K_{\mathbb{K}}(X)
+  &= G(V_{\mathbb{K}}(X)/\sim_{s})
+\end{align*}
+What makes this construction better is that the compact Hausdorff property of $X$ implies the cancellation property of $V_{\mathbb{K}}(X)/\sim_{s}$ and hence $[E]_{s} \in V_{\mathbb{K}}(X)/\sim_{s}$ can be identified with the class $[(E,\epsilon^{0})]$ in $K_{\mathbb{K}}(X)$. So $K_{\mathbb{K}}(X)$ contains all vector bundles over $X$ up to stable isomorphism.
+\\
+\phantom{proven}
+\hfill
+$\square$
+\end{rem}
+$K_{\mathbb{K}}$ as a functor from a topological category into an algebraic one is suited for classification purposes as mentioned in subsection \ref{sec:categories} (more specifically in theorem \ref{thm:catiso}). However, it is not quite well-behaved because if $X$ is just a point $\lbrace x \rbrace$ over which bundles are necessarily topologcally trivial then the K-group $K_{\mathbb{K}}(\lbrace x \rbrace)$ is not the trivial group $0$. This is sometimes undesirable and can be fixed by introducing a \textit{reduced}\footnote{compare \textit{cohomology}} version $\tilde{K}_{\mathbb{K}}$ of $K_{\mathbb{K}}$. We will now construct the reduced version and examine its relation to the unreduced one. To this end we choose a point $x \in X$. Then there is a canonical momorpism
+\begin{align*}
+  \rho_{x}
+  \colon
+  K_{\mathbb{K}}(X)
+  \to
+  K_{\mathbb{K}}(\lbrace x \rbrace)
+\end{align*}
+by the restriction of vector bundles. The kernel of $\rho_{x}$ defines
+\begin{align*}
+  \tilde{K}_{\mathbb{K}}^{0}((X,x))
+  &:=
+  \tilde{K}_{\mathbb{K}}((X,x))
+  :=
+  \mathrm{ker}(\rho_{x})
+\end{align*}
+If $X$ is just a point $\rho_{x}$ is the identity and thus
+\begin{align*}
+  \tilde{K}_{\mathbb{K}}((X,x))
+  =
+  0
+\end{align*}
+as it should be. Now to better understand $\tilde{K}_{\mathbb{K}}$ and its relation to $K_{\mathbb{K}}$ consider the equivalence relation $E_{1} \sim E_{2}$ if and only if there are trivial bundles $\epsilon^{m_{1}},\epsilon^{m_{2}}$ such that
+\begin{align*}
+  E_{1}
+  \oplus
+  \epsilon^{m_{1}}
+  &=
+  E_{2}
+  \oplus
+  \epsilon^{m_{2}}
+\end{align*}
+on $V_{\mathbb{K}}(X)$. Then proposition \ref{prp:vbtriv} shows that
+\begin{align*}
+  \hat{K}_{\mathbb{K}}^{0}(X)
+  &:=
+  \hat{K}_{\mathbb{K}}(X)
+  :=
+  V_{\mathbb{K}}(X)/\sim
+\end{align*}
+is a group and we have the surjective homomorphism
+\begin{align*}
+  p
+  &\colon
+  K_{\mathbb{K}}(X)
+  \to
+  \hat{K}_{\mathbb{K}}(X)
+  ,\qquad
+  [(E,\epsilon^{m})]
+  \mapsto
+  [E]
+\end{align*}
+The kernel of $p$ consists of equivalence classes $[(\epsilon^{m_{1}},\epsilon^{m_{2}})]$. Hence the kernel  $\mathrm{ker}(p)$ of $p$ is $\mathbb{Z}$. Using some algebraic topology - more precisely the splitting theorem from homology - one can conclude from $\rho_{x}$ and $p$ that
+\\
+\begin{prp}
+\label{prp:factor}
+Let $X$ be a compact Hausdorff space with basepoint $x$. Then the equalities
+\begin{align*}
+  K_{\mathbb{K}}(X)
+  &=
+  \hat{K}_{\mathbb{K}}(X) \oplus \mathbb{Z}
+  \\
+  \tilde{K}_{\mathbb{K}}((X,x))
+  &= \hat{K}_{\mathbb{K}}(X)
+\end{align*}
+hold as abelian groups.
+\\
+\phantom{proven}
+\hfill
+$\square$
+\end{prp}
+Again $\tilde{K}_{\mathbb{K}}$ and $\hat{K}_{\mathbb{K}}$ are contravariant functors although the codomain is not $\mathbf{Ring}$ at best anymore but only $\mathbf{Rng}$. In a slight abuse of notation, we follow the convention and write $\tilde{K}_{\mathbb{K}}$ for $\hat{K}_{\mathbb{K}}$.
+\\
+In the introduction to the subsection we said that a K-theory should consist of infinitely many functors but so far we only have a $K_{\mathbb{K}}^{0}$ involving the Grothendieck group as suggested. But $\tilde{K}_{\mathbb{K}}$ has an interesting property which can be used to define $\tilde{K}_{\mathbb{K}}^{n}$ which in turn can sensibly be extended to $K_{\mathbb{K}}^{n}$ for all $n \in \mathbb{Z}$: the famous Bott periodicity.
+\\
+\begin{prp}
+\label{prp:bott}
+Let $X$ be a compact Hausdorff space. Then the equalities
+\begin{align*}
+  \tilde{K}_{\mathbb{R}}(X)
+  &=
+  \tilde{K}_{\mathbb{R}}(S^{8}(X))
+  \\
+  \tilde{K}_{\mathbb{C}}(X)
+  &=
+  \tilde{K}_{\mathbb{C}}(S^{2}(X))
+\end{align*} hold where $S$ denotes the suspension functor and $S^{n}$ denotes its $n$-times-application for $n \in \mathbb{N}$.
+\\
+\phantom{proven}
+\hfill
+$\square$
+\end{prp}
+For $n \in \mathbb{N}$ one can define
+\begin{align*}
+  \tilde{K}_{\mathbb{K}}^{-n}(X)
+  &:=
+  \tilde{K}_{\mathbb{K}}(S^{n}(X))
+\end{align*}
+For a definition also including the missing $\tilde{K}_{\mathbb{K}}^{n}(X)$ with $n \in \mathbb{N}^{\times}$ one can use proposition \ref{prp:bott}: namely for all $i \in \mathbb{Z}$ define
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{i}(X)
+  &:=
+  \tilde{K}_{\mathbb{C}}^{i+2}(X)
+  \\\
+  \tilde{K}_{\mathbb{R}}^{i}(X)
+  &:=
+  \tilde{K}_{\mathbb{R}}^{i+8}(X)
+\end{align*}
+such that for $n \in \mathbb{N}$ 
+\begin{align*}
+  \tilde{K}_{\mathbb{K}}^{-n}(X)
+  &=
+  \tilde{K}_{\mathbb{K}}(S^{n}(X))
+\end{align*}
+holds. Finally we set for all $n \in \mathbb{Z}$
+\begin{align*}
+  K_{\mathbb{K}}^{n}(X)
+  &:=
+  \tilde{K}_{\mathbb{K}}^{n}(X_{+})
+\end{align*}
+where $X_{+} := X + \lbrace \infty \rbrace$ is the one-point compactification due to the Alexandroff extension theorem and $+$ the coproduct. And lo and behold we have well-defined K-theory. This is because $X_{+}$ is compact Hausdorff if $X$ is and because it can be shown that the definition is consistent with the original definition of $K_{\mathbb{K}}^{0}$. As a last word on the definition, please note that proposition \ref{prp:bott} is a main tool in computing higher K-groups by definition. For one only has to compute two and eight groups, respectively.
+\\
+Having introduced topological K-theory we want to compute the K-groups needed in these notes - $K_{\mathbb{C}}(\mathbb{T}^{n})$ where $\mathbb{T}^{n}$ denotes the $n$-torus - in this last paragraph of this subsection. For that purpose first note that $\tilde{K}_{\mathbb{C}}$ has two neat properties helping in computing K-groups of composed spaces (like the torus):
+\\
+\begin{prp}
+\label{prp:wedge}
+Let $X$ and $Y$ be compact Hausdorff spaces. Then the euqalities
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}(X \vee Y)
+  &=
+  \tilde{K}_{\mathbb{C}}(X)
+  \oplus
+  \tilde{K}_{\mathbb{C}}(Y)
+  \\
+  \tilde{K}_{\mathbb{C}}(X \times Y)
+  &=
+  \tilde{K}_{\mathbb{C}}(X \wedge Y)
+  \oplus
+  \tilde{K}_{\mathbb{C}}(X \vee Y)
+\end{align*}
+hold as abelian groups if $\vee$ denotes the wedge sum and $\wedge$ denotes the smash product
+\\
+\phantom{proven}
+\hfill
+$\square$
+\end{prp}
+Together with proposition \ref{prp:bott} proposition \ref{prp:wedge} leads to some K-groups of some interesting spaces inculding the $n$-torus:
+\\
+\begin{exa}
+\label{exa:kgrstandard}
+Let us look at some $K_{\mathbb{C}}^{n}(X)$ and some $\tilde{K}_{\mathbb{C}}^{n}(X)$ of
+\begin{enumerate}
+\item
+the point: $X = \lbrace x_{0} \rbrace$. We already know that $\tilde{K}_{\mathbb{C}}^{0}(\lbrace x_{0} \rbrace)$ is trivial. But as the suspension of a point is homotopy equivalent to a point we also get that $\tilde{K}_{\mathbb{C}}^{1}(\lbrace x_{0} \rbrace)$ is trivial, too. So for all $n \in \mathbb{Z}$
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{n}(\lbrace x_{0} \rbrace)
+  &=
+  0
+\end{align*}
+    Using the factorization \ref{prp:factor} we conclude that $K_{\mathbb{C}}^{0}(\lbrace x_{0} \rbrace)$ is $\mathbb{Z}$. Moreover $K_{\mathbb{C}}^{1}(\lbrace x_{0} \rbrace)$ is by definition $\tilde{K}_{\mathbb{C}}^{1}(\lbrace x_{0}, \infty  \rbrace)$ which by Bott periodicity is $\tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{1})$ as the suspension of two points (the $0$-sphere) is the $1$-sphere. In the next example we will argue why $\tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{1})$ is $0$. So for all $n \in \mathbb{Z}$
+\begin{align*}
+  K_{\mathbb{C}}^{n}(\lbrace x_{0} \rbrace)
+  &=
+  \begin{cases}
+    \mathbb{Z}
+    &
+    \text{$n$ is even}
+    \\
+    0
+    &
+    \text{$n$ is odd}
+  \end{cases}
+\end{align*}
+\item
+  the $1$-sphere: $X = \mathbb{S}^{1}$. As all vector bundles over $\mathbb{S}^{1}$ are trivial so must be $\tilde{K}_{\mathbb{X}}^{0}(\mathbb{S}^{1})$.\footnote{this is a bit of a sketchy argumentation but it is essentially true} Further the suspension of $\mathbb{S}^{1}$ is the $2$-sphere $\mathbb{S}^{2}$. Therefore $\tilde{K}_{\mathbb{X}}^{1}(\mathbb{S}^{1})$ is $\tilde{K}_{\mathbb{X}}^{0}(\mathbb{S}^{2})$ which in turn is\footnote{proving this requires some effort} $\mathbb{Z}$. So for all $n \in \mathbb{Z}$
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{n}(\mathbb{S}^{1})
+  &=
+  \begin{cases}
+    0
+    &
+    \text{$n$ is even}
+    \\
+    \mathbb{Z}
+    &
+    \text{$n$ is odd}
+  \end{cases}
+\end{align*}
+Using the factorization \ref{prp:factor} it is clear that
+\begin{align*}
+  K_{\mathbb{C}}^{0}(\mathbb{S}^{1})
+  &=
+  \mathbb{Z}
+\end{align*}
+at least.
+\item
+  the $n$-torus: $X = \mathbb{T}^{n} = \mathbb{S}^{1} \times \ldots \times \mathbb{S}^{1}$. Note that $\mathbb{T}^{0}$ is just a point so it suffices to consider $n > 0$ as we already treated the singleton space. First, for all $n$, by proposition \ref{prp:wedge} we get
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{T}^{n})
+  &=
+  \tilde{K}_{\mathbb{C}}(\mathbb{S}^{1} \times \mathbb{T}^{n-1})
+  \\
+  &=
+  \tilde{K}_{\mathbb{C}}(\mathbb{S}^{1} \wedge \mathbb{T}^{n-1})
+  \oplus
+  \tilde{K}_{\mathbb{C}}(\mathbb{S}^{1} \vee \mathbb{T}^{n-1})
+  \\
+  &=
+  \tilde{K}_{\mathbb{C}}(\mathbb{S}^{1} \wedge \mathbb{T}^{n-1})
+  \oplus
+  \tilde{K}_{\mathbb{C}}(\mathbb{S}^{1})
+  \oplus
+  \tilde{K}_{\mathbb{C}}(\mathbb{T}^{n-1})
+  \\
+  &=
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{1} \wedge \mathbb{T}^{n-1})
+  \oplus
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{T}^{n-1})
+\end{align*}
+and by definition
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{1}(\mathbb{T}^{n})
+  &=
+  \tilde{K}_{\mathbb{C}}^{0}(S(\mathbb{T}^{n}))
+\end{align*}
+Thus we can easily calculate $\tilde{K}_{\mathbb{C}}^{i}(\mathbb{T}^{n})$ in the cases $n = 1$ and $n = 2$ for the above formulas specialize to
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{T}^{1})
+  &=
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{1} \wedge \mathbb{T}^{0})
+  \oplus
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{T}^{0})
+  =
+  0
+  \\
+  \tilde{K}_{\mathbb{C}}^{1}(\mathbb{T}^{1})
+  &=
+  \tilde{K}_{\mathbb{C}}^{0}(S(\mathbb{T}^{1}))
+  =
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{2})
+  =
+  \mathbb{Z}
+\end{align*}
+and with some effort on the very last equality
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{T}^{2})
+  &=
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{1} \wedge \mathbb{T}^{1})
+  \oplus
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{T}^{1})
+  =
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{1} \wedge \mathbb{S}^{1})
+  \oplus
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{1})
+  =
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{S}^{2})
+  =
+  \mathbb{Z}
+  \\
+  \tilde{K}_{\mathbb{C}}^{1}(\mathbb{T}^{2})
+  &=
+  \tilde{K}_{\mathbb{C}}^{0}(S(\mathbb{T}^{2}))
+  =
+  \mathbb{Z} \oplus \mathbb{Z}
+\end{align*}
+respectively. Going on like that one is eventually led to the conjecture for arbitrary $n \in \mathbb{N}^{\times}$ that for all $i \in \mathbb{Z}$
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{i}(\mathbb{T}^{n})
+  &=
+  \begin{cases}
+    \bigoplus_{j=1}^{2^{n-1}-1}
+    \mathbb{Z}
+    &
+    \text{$i$ is even}
+    \\
+    \bigoplus_{j=1}^{2^{n-1}}
+    \mathbb{Z}
+    &
+    \text{$i$ is odd}
+  \end{cases}
+\end{align*}
+hold. And this can in fact be shown by induction over $n$. Again, using the factorization \ref{prp:factor} it is clear that
+\begin{align*}
+  K_{\mathbb{C}}^{0}(\mathbb{T}^{n})
+  &=
+  \mathbb{Z}
+  \oplus
+  \tilde{K}_{\mathbb{C}}^{0}(\mathbb{T}^{n})
+\end{align*}
+at least.
+\end{enumerate}
+\phantom{proven}
+\hfill
+$\square$
+\end{exa}
+While we mostly ignored geometry by abstracting isomorphism with (structural) equality in this section all the propositions we made do still have a geometrical meaning. Example \ref{exa:kgrstandard} is not an exception. See e.g. \cite{c7f15065}. However, this is not our point and we further accept {\glqq}the devil's offer of algebra{grqq} to squeeze out more of example \ref{exa:kgrstandard}: To this end we first rearrange the direct sums in $\tilde{K}_{\mathbb{C}}^{i}(\mathbb{T}^{n})$ exploiting a relation between $2^{n}$ and binomial coefficients. For it is well-known that for all $n \in \mathbb{N}$
+\begin{align*}
+  \sum_{k=0}^{\lfloor (n - 1)/2) \rfloor}\binom{n}{2k}
+  &=
+  \begin{cases}
+    2^{n-1} - 1
+    &
+    \text{$n$ is even}
+    \\
+    2^{n-1}
+    &
+    \text{$n$ is odd}
+  \end{cases}
+\end{align*}
+Thus by setting $\mathbb{X}^{2k} := \mathbb{Z}$ and $\mathbb{X}^{2k+1} = 0$ we have for all $n \in \mathbb{N}$
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{n}(\mathbb{T}^{n})
+  &=
+  \bigoplus_{j=0}^{\sum_{k=0}^{\lfloor (n - 1)/2 \rfloor}\binom{n}{2k}}
+  \mathbb{Z}
+  =
+  \bigoplus_{k=0}^{\lfloor (n - 1)/2 \rfloor}
+  \binom{n}{2k}
+  \mathbb{X}^{2k}
+  =
+  \bigoplus_{j=0}^{n-1}
+  \binom{n}{j}
+  \mathbb{X}^{j}
+\end{align*}
+But algebraically $\mathbb{X}^{j}$ is nothing but $K_{\mathbb{C}}^{j}(\lbrace x_{0} \rbrace)$ and hence
+\begin{align*}
+  \tilde{K}_{\mathbb{C}}^{n}(\mathbb{T}^{n})
+  &=
+  \bigoplus_{j=0}^{n-1}
+  \binom{n}{j}
+  K_{\mathbb{C}}^{j}(\lbrace x_{0} \rbrace)
+\end{align*}
+By Bott periodicity and a case analysis on the eveness of $n$ it is an easy exercise to further prove
+\begin{align*}
+  K_{\mathbb{C}}^{0}(\mathbb{T}^{n})
+  &=
+  K_{\mathbb{C}}^{n}(\{ x_{0} \})
+  \oplus
+  \tilde{K}_{\mathbb{C}}^{n}(\mathbb{T}^{n})
+  =
+  \bigoplus_{j=0}^{n}
+  \binom{n}{j}
+  K_{\mathbb{C}}^{j}(\lbrace x_{0} \rbrace)
+\end{align*}
+This is a striking result relating the even K-groups of the $n$-torus to the K-groups of the point less than and equal to $n$. And even though it does not seem to bear much geometrical meaning at first glance this direct sum decomposition is at the heart of the classification of topological insulators as we will see in the next setion \ref{sec:topins}.
