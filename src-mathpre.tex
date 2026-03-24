@@ -1,41 +1,41 @@
 \nocite{8b5861fc}
 \nocite{c7f15065}
-In this section we recount the mathematics needed to receive an impression of topological insulators.
-The mathematical branches relevant for the theory of topological insulators
+In this section we recount the mathematics needed to obtain an impression of topological insulators.
+The mathematical branches relevant for the theory of topological insulators are
 \begin{enumerate}
 \item[$\bullet$]
   (functional) analysis
 \item[$\bullet$]
   homotopy theory
 \end{enumerate}
-The former is relevant to describe the quantum mechanical aspect and the latter the topological.
-And while we assume the reader to be familiar with functional analysis (i.p. spectral theory and the mathematics of quantum mechanics) and basic homotopy theory (see e.g. \cite{catctxphy} or the standard reference \cite{8b5861fc}) we do not require the reader to be familiar with more advanced homotopy theory.
-Most notably, we do not assume any knowledge on topological K-theory.
-Topological K-theory is the main tool for a rough understanding of topological phases and it is what this section is about.
+The former is relevant for describing the quantum-mechanical aspects and the latter for the topological ones.
+And while we assume the reader to be familiar with functional analysis (in particular spectral theory and the mathematics of quantum mechanics) and basic homotopy theory (see e.g. \cite{catctxphy} or the standard reference \cite{8b5861fc}), we do not require familiarity with more advanced homotopy theory.
+Most notably, we do not assume any knowledge of topological K-theory.
+Topological K-theory is the main tool for a rough understanding of topological phases, and it is the subject of this section.
 Our presentation is essentially an abstraction of \cite{c7f15065}.
-Accordingly, we have subsections on categories, the Grothendieck group and vector bundles needed to eventually treat topological K-theory in the last subsection.
-Note that our treatment of these topics is very high-level and algebraic mostly glossing over geometrical aspects.
-This is suffices our needs but eventually you may wish to go with something like \cite{c7f15065} for a deeper understanding.
-In fact, characteristic classes - i.p. Chern classes - as presented there are important for a thorough understanding of our account of topological insualtors in section \ref{sec:topins}.
-This also involves some differential geometry but for a high-level picture on the topic both topics can be neglected.
+Accordingly, we include subsections on categories, the Grothendieck group, and vector bundles, leading up to topological K-theory in the final subsection.
+Note that our treatment of these topics is very high-level and mostly algebraic, largely glossing over geometric aspects.
+This suffices for our purposes, but the reader may eventually wish to consult a source such as \cite{c7f15065} for a deeper understanding.
+In fact, characteristic classes - in particular Chern classes - as presented there are important for a thorough understanding of our account of topological insulators in section \ref{sec:topins}.
+This also involves some differential geometry, but for a high-level picture both topics can be neglected.
 \\
 \begin{rem}
 \label{rem:style}
-Before getting started a few words about the mathematical style: 
+Before getting started, a few words about the mathematical style: 
 \begin{enumerate}
 \item[$\bullet$]
-  Mathematical definitions use \textbf{boldfaced type} to indicate the term being defined.
-In later sections we will sometimes encounter new terms that we cannot define here for different reasons.
-In this case we will use \textit{italic type} instead of boldfaced type and the reader is referred to other sources.
-In these preliminaries we usually give an example to each definition for the sake of comprehension.
-However, most often we do not give a proof of the propositions we make.
-If at all, we only sketch one. 
+  Mathematical definitions use \textbf{boldface type} to indicate the term being defined.
+In later sections we will sometimes encounter new terms that we cannot define here for various reasons.
+In this case we use \textit{italic type} instead of boldface type and refer the reader to other sources.
+In these preliminaries we usually provide an example for each definition for the sake of comprehension.
+However, in most cases we do not give proofs of the stated propositions.
+If anything, we only sketch them. 
 \item[$\bullet$]
-  $\mathsf{A}$ stands for both a finite and infinite index set, that is, an arbitrary set with specified cardinality.
-$\mathbb{K}$ stands for either the real numbers $\mathbb{R}$ or the complex numbers $\mathbb{C}$ and $(\cdot \vert \cdot)$ denotes the scalar product.
-Following the convention we use the term \textit{space} for a set together with some \textit{structures} (e.g. topology, vector space structure, \ldots) and \textit{subspace} means a subset of the space's set together with the structure it can \textit{inherit}.
-In the context of spaces we redefine \textbf{map} to mean spaces-preserving function for the sake of brevity.
-That is, map in the context of topological spaces means continuoous function, for example.
+  $\mathsf{A}$ denotes both finite and infinite index sets, that is, arbitrary sets with specified cardinality.
+$\mathbb{K}$ denotes either the real numbers $\mathbb{R}$ or the complex numbers $\mathbb{C}$, and $(\cdot \vert \cdot)$ denotes the scalar product.
+Following common convention, we use the term \textit{space} for a set together with some \textit{structure} (e.g. a topology, vector space structure, \ldots), and \textit{subspace} means a subset equipped with the induced structure.
+In this context, we use the term \textbf{map} to mean a structure-preserving function for the sake of brevity.
+That is, in the context of topological spaces, a map means a continuous function, for example.
 \end{enumerate}
 \phantom{proven}
 \hfill
