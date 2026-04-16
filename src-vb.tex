@@ -9,7 +9,7 @@ The topological information we will later be interested in can be encoded in so-
 \\
 A vector bundle is a special type of fiber bundle.
 So let us consider fiber bundles first.
-A \textbf{fiber bundle} is a tuple $(E,B,p,F)$ consisting of topological spaces $E,B,F$ and a map $p \colon E \to B$ such that there is an open cover $\lbrace U_{\alpha} \colon \alpha \in \mathsf{A} \rbrace$ of $B$ and homeomorphisms $h_{\alpha} \colon p^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ taking $p^{-1}(b_{\alpha})$ to $\lbrace b_{\alpha} \rbrace \times F$ for all $b_{\alpha} \in U_{\alpha}$.
+A \textbf{fiber bundle} is a tuple $(E,B,p,F)$ consisting of topological spaces $E,B,F$ and a map $p \colon E \to B$ such that there is an open cover $\lbrace U_{\alpha} \colon \alpha \in \mathsf{A} \rbrace$ of $B$ and homeomorphisms $h_{\alpha} \colon p^{-1}(U_{\alpha}) \to U_{\alpha} \times F$ mapping $p^{-1}(b_{\alpha})$ to $\lbrace b_{\alpha} \rbrace \times F$ for all $b_{\alpha} \in U_{\alpha}$.
 $\lbrace (h_{\alpha},U_{\alpha}) \colon \alpha \in \mathsf{A} \rbrace$ is called a local trivialization, $E$ is the \textbf{total space}, $B$ the \textbf{base space}, and $F$ the \textbf{fiber}.
 The fiber bundle $(E,B,p,F)$ is \textbf{trivial} if there is a homeomorphism $p^{-1}(B) \to B \times F$.
 Hence, a fiber bundle is a generalization of the cartesian product as a topological space, and cartesian products are a first, though trivial, example of fiber bundles.
@@ -18,7 +18,7 @@ Now we can restrict our attention to vector bundles.
 They are fiber bundles where the fiber is a specific vector space.
 More precisely, a \textbf{(real/complex $n$-dimensional) vector bundle} is a fiber bundle $(E,B,p,\mathbb{K}^{n})$ such that for the local trivialization $\lbrace (h_{\alpha},U_{\alpha}) \rbrace$, the map $h_{\alpha} \vert p^{-1}(b_{\alpha})$ is linear for all $b_{\alpha} \in U_{\alpha}$.
 Sometimes one just writes $p \colon E \to B$, or even more simply $E$, for a vector bundle.
-It is common as well to write $\epsilon^{n}$ for the $n$-dimensional trivial bundle over a context-related base space.
+It is aslo common to write $\epsilon^{n}$ for the $n$-dimensional trivial bundle over a context-related base space.
 A non-trivial example is the tangent bundle over the sphere $S^{2}$.
 \\
 Vector bundles can be reconstructed from their trivial pieces.
@@ -68,7 +68,7 @@ the \textbf{restriction} of $p \colon E \to B$ to a subset $\tilde{B}$ of $B$ is
 \item[(ii)]
 the \textbf{product} of vector bundles $p \colon E \to B$ and $\hat{p} \colon \hat{E} \to \hat{B}$ is a vector bundle $p \times \hat{p} \colon E \times \hat{E} \to B \times \hat{B}$ with fibers $p^{-1}(b) \times \hat{p}^{-1}(\hat{b})$ for $b \in B$ and $\hat{b} \in \hat{B}$.
 \end{enumerate}
-So restricting the product $E_{1} \times E_{2}$ over the diagonal of $B \times B$ yields $E_{1} \oplus E_{2}$ as a vector bundle.
+So restricting the product $E_{1} \times E_{2}$ to the diagonal of $B \times B$ yields $E_{1} \oplus E_{2}$ as a vector bundle.
 \item[$\bullet$]
 A \textbf{scalar product} is a map $(\cdot\vert\cdot) \colon E_{1} \times E_{1} \to \mathbb{K}$ that is a scalar product (on vector spaces) in each fiber.
 One can guarantee the existence of a scalar product if $B$ is compact Hausdorff.
